@@ -12,7 +12,8 @@ const email = document.querySelector('#email'),
       notif = document.querySelector('.alert'),
       closeAlert = document.querySelector('.close-btn'),
       password2 = document.querySelector('#repeatepassword'),
-      link = document.querySelector('.loh')
+      link = document.querySelector('.loh'),
+      footer = document.querySelector('.footer-p')
 
 
 btn.addEventListener('click', (event) => {
@@ -59,6 +60,7 @@ btn2.addEventListener('click', () => {
     hello.classList.toggle('text2')
     body.classList.toggle('body3')  
     link.classList.toggle('text2')
+    footer.classList.toggle('text2')
 })
 
 
