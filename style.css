@@ -8,8 +8,7 @@
 body {
     font-family: 'Inter', sans-serif;
     transition: all 0.3s;
-    background: #222;
-    color: white;
+    background: white;
 }
 
 .logo {
@@ -23,7 +22,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 8px 18px;
-    background: #222;
+    background: white;
     box-shadow: 0px 3px 10px -1px rgba(0, 0, 0, 0.09);
     transition: all 0.3s;
 }
@@ -46,7 +45,9 @@ body {
 .logo b {
     color: #7AA444;
 }
-
+span {
+    color: #222;
+}
 .loh  {
     font-family: 'Inter';
     font-style: normal;
@@ -54,7 +55,7 @@ body {
     font-size: 16.7862px;
     margin-right: 30px;
     text-decoration: none;
-    color: white;
+    color: #222;
 }
 
 .form input{
@@ -67,7 +68,6 @@ body {
     border-radius: 19px;
     width: 400px;
     font-weight: bold;
-    color: white;
     outline: none;
     transition: all 0.3s;
 }
@@ -110,6 +110,10 @@ body {
     }
 }
 
+.theme {
+    transition: all 0.3s;
+}
+
 .theme-changer {
     position: fixed;
     right: 40px;
@@ -117,7 +121,7 @@ body {
     width: 60px;
     height: 23px;
     border-radius: 11px;
-    background: white;
+    background: #222;
     box-shadow: 4px 4px 14px 4px rgba(0, 0, 0, 0.117);
 }
 
@@ -128,23 +132,24 @@ body {
     left: 5px;
     width: 15px;
     height: 15px;
-    background: #222;
+    background: white;
     border-radius: 50%;
     transition: all 0.4s;
 }
 
 .theme-black {
-    color: #222;
+    color: white;
 }
 
 .theme-black-block {
     left: 37px;
-    background: white;
+    background: #222;
 }
 
 .theme-change{
-    background: #222;
+    background: white;
 }
+
 .status {
     margin-top: 30px;
     text-align: center;
