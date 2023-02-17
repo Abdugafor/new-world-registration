@@ -11,14 +11,18 @@ body {
     transition: all 0.3s;
 }
 
+input {
+    outline: none;
+}
+
 .container {
     margin: 0 auto;
     transition: all 0.5s;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .logo {
@@ -179,11 +183,7 @@ button:hover {
   display: none;
 }
 .footer {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 10px;
-    left: 50%;
-    transform: translate(-50%);
+    margin-top: 50px;
 }
 .footer a{
     text-decoration: none;

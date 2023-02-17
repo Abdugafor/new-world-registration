@@ -64,4 +64,5 @@ btn2.addEventListener('click', () => {
 })
 
 
+// App starting
 
