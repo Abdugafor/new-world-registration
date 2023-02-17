@@ -1,68 +1,82 @@
-const email = document.querySelector('#email'),
-      password = document.querySelector('#password'),
-      btn = document.querySelector('.btn'),
-      btn2 = document.querySelector('#btn2'),
-      theme = document.querySelector('.theme'),
-      input = document.querySelectorAll('input'),
-      container = document.querySelector('.container'),
-      navigator = document.querySelector('.navigator'),
-      text = document.querySelector('.text'),
-      hello = document.querySelector('.hello'),
-      body = document.querySelector('.body'),
-      notif = document.querySelector('.alert'),
-      closeAlert = document.querySelector('.close-btn'),
-      password2 = document.querySelector('#repeatepassword'),
-      link = document.querySelector('.loh'),
-      footer = document.querySelector('.footer-p')
+window.addEventListener('DOMContentLoaded', () => {
+
+    // Theme changer
+
+    const blackTheme = document.querySelectorAll('.theme'),
+          themeBtn = document.querySelector('.theme-btn'),
+          themeBlock = document.querySelectorAll('.theme-block'),
+          themeChanger = document.querySelector('.theme-changer')
+
+    themeBtn.addEventListener('click', changeTheme)
+
+    function changeTheme() {
+        themeBtn.classList.toggle('theme-black-block')
+        blackTheme.forEach(item => item.classList.toggle('theme-black'))
+        themeBlock.forEach(item => item.classList.toggle('theme-black-block'))
+        themeChanger.classList.toggle('theme-change')
+    }
+
+    // Forms
+
+    const form = document.querySelector('form'),
+          password = document.querySelector('#password'),
+          password2  = document.querySelector('#repeatepassword')
+
+    form.addEventListener('submit', postData)
+
+    const messages = {
+        load: 'Loading...',
+        success: 'Successfuly!',
+        fail: 'Error...'
+    }
+
+    function postData(e) {
+        e.preventDefault()
+
+        const pass = password.value
+        const secondPassword = password2.value
+        const error = document.createElement('div')
+
+        if (pass != secondPassword || pass === '') {
+            error.innerHTML = 'Password are not identical!'
+            error.classList.add('error')
+            form.append(error)
+        }else {
+            sendData()
+            
+        }
+    }
+
+    function sendData() {
+        const statusMessage = document.createElement('div')
+        statusMessage.classList.add('status')
+        statusMessage.textContent = messages.load
+        form.append(statusMessage)
 
 
-btn.addEventListener('click', (event) => {
-    event.preventDefault()
-   
+        const request = new XMLHttpRequest()
 
-    if (email.value == '') {
-        email.classList.add('animation')
-        setTimeout(() => {
-            email.classList.remove('animation')
-        }, 1500)
-    }  if (password.value == '') {
-        password.classList.add('animation')
-        setTimeout(() => {
-            password.classList.remove('animation')
-        }, 1500)
-    }    if (password2.value == '') {
-        password2.classList.add('animation')
-        setTimeout(() => {
-            password2.classList.remove('animation')
-        }, 1500)
-    } if (password2.value != password.value) {
-        password2.classList.add('animation')
-        setTimeout(() => {
-            password2.classList.remove('animation')
-        }, 1500)
+        request.open('POST', 'server.php')
 
-        password.classList.add('animation')
-        setTimeout(() => {
-            password.classList.remove('animation')
-        }, 1500)
-    } 
-    
+        const formData = new FormData(form)
+        request.send(formData)
+
+        request.addEventListener('load', () => {
+            if (request.status === 200) {
+                console.log(request.response)
+                form.innerHTML = `
+                <img src="success.png" alt="" width="100" class="imgS">
+                ` 
+                statusMessage.textContent = messages.success
+                statusMessage.classList.add('green')
+                form.append(statusMessage)
+            }else {
+                statusMessage.textContent = messages.fail
+            }
+        })
+    }
 })
 
-btn2.addEventListener('click', () => {
-    btn2.classList.toggle('btnmove')
-    theme.classList.toggle('theme2')
-    input.forEach((e) => {
-        e.classList.toggle('input2')
-    })
-    navigator.classList.toggle('body2')
-    text.classList.toggle('text2')
-    hello.classList.toggle('text2')
-    body.classList.toggle('body3')  
-    link.classList.toggle('text2')
-    footer.classList.toggle('text2')
-})
 
 
-// App starting
 
